@@ -1,0 +1,82 @@
+import tkinter as tk
+
+calculator=tk.Tk()
+
+calculator.geometry("300x400")
+calculator.configure(bg="black")
+
+calculator.title("SIMPLE CALCULATOR")
+
+def evaluation(calculate):
+    text_enter = number_enter.get()
+    if calculate == "=":
+        try:
+            result = eval(text_enter)
+            number_enter.set(result)
+        except:
+            number_enter.set("please enter crt value")
+    elif calculate == "C":
+        number_enter.set("")
+    else:
+        number_enter.set( text_enter+ calculate)
+
+
+number_enter = tk.StringVar()
+screen_Entry = tk.Entry(calculator, textvariable=number_enter, font=("Arial", 20), justify="right",bg="grey")
+screen_Entry.grid(row=0, column=0, columnspan=4)
+
+button1=tk.Button(calculator,text="1",padx=20,pady=20,command=lambda t="1":evaluation(t),bg="orange")
+button1.grid(row=1,column=0)
+
+button2=tk.Button(calculator,text="2",padx=20,pady=20,command=lambda t="2":evaluation(t),bg="orange")
+button2.grid(row=1,column=1)
+
+button3=tk.Button(calculator,text="3",padx=20,pady=20,command=lambda t="3":evaluation(t),bg="orange")
+button3.grid(row=1,column=2)
+
+
+button4=tk.Button(calculator,text="4",padx=20,pady=20,command=lambda t="4":evaluation(t),bg="orange")
+button4.grid(row=1,column=3)
+
+button5=tk.Button(calculator,text="5",padx=20,pady=20,command=lambda t="5":evaluation(t),bg="orange")
+button5.grid(row=2,column=0)
+
+button6=tk.Button(calculator,text="6",padx=20,pady=20,command=lambda t="6":evaluation(t),bg="orange")
+button6.grid(row=2,column=1)
+
+button7=tk.Button(calculator,text="7",padx=20,pady=20,command=lambda t="7":evaluation(t),bg="orange")
+button7.grid(row=2,column=2)
+
+button8=tk.Button(calculator,text="8",padx=20,pady=20,command=lambda t="8":evaluation(t),bg="orange")
+button8.grid(row=2,column=3)
+
+button9=tk.Button(calculator,text="9",padx=20,pady=20,command=lambda t="9":evaluation(t),bg="orange")
+button9.grid(row=3,column=0)
+
+button10=tk.Button(calculator,text="0",padx=20,pady=20,command=lambda t="0":evaluation(t),bg="orange")
+button10.grid(row=3,column=1)
+
+button11=tk.Button(calculator,text="+",padx=20,pady=20,command=lambda t="+":evaluation(t),bg="orange")
+button11.grid(row=3,column=2)
+
+button12=tk.Button(calculator,text="-",padx=20,pady=20,command=lambda t="-":evaluation(t),bg="orange")
+button12.grid(row=3,column=3)
+
+button13=tk.Button(calculator,text="*",padx=20,pady=20,command=lambda t="*":evaluation(t),bg="orange")
+button13.grid(row=4,column=0)
+
+button14=tk.Button(calculator,text="/",padx=20,pady=20,command=lambda t="/":evaluation(t),bg="orange")
+button14.grid(row=4,column=1)
+
+button15=tk.Button(calculator,text=".",padx=20,pady=20,command=lambda t=".":evaluation(t),bg="orange")
+button15.grid(row=4,column=2)
+
+button16=tk.Button(calculator,text="C",padx=20,pady=20,command=lambda t="C":evaluation(t),bg="green")
+button16.grid(row=4,column=3)
+
+
+button17=tk.Button(calculator,text="=",padx=20,pady=20,command=lambda t="=":evaluation(t),bg="green")
+button17.grid(row=5,column=0)
+
+
+calculator.mainloop()
