@@ -1,0 +1,60 @@
+
+class Task:
+    def __init__(self, name, due_date):
+        self.name = name
+        self.due_date = due_date
+        self.completed = False
+
+class TodoList:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task):
+        self.tasks.append(task)
+
+    def list_tasks(self):
+        for index, task in enumerate(self.tasks, start=1):
+            status = "✓" if task.completed else " "
+            print(f"{index}. [{status}] {task.name} - Due: {task.due_date}")
+
+    def mark_task_completed(self, task_index):
+        if 1 <= task_index <= len(self.tasks):
+            self.tasks[task_index - 1].completed = True
+
+def main():
+    todo_list = TodoList()
+
+    while True:
+        print("\n--- To-Do List ---")
+        print("1. Add Task")
+        print("2. List Tasks")
+        print("3. Mark Task Completed")
+        print("4. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            name = input("Enter task name: ")
+            due_date = input("Enter due date: ")
+            task = Task(name, due_date)
+            todo_list.add_task(task)
+            print("Task added!")
+
+        elif choice == "2":
+            todo_list.list_tasks()
+
+        elif choice == "3":
+            todo_list.list_tasks()
+            task_index = int(input("Enter the task number to mark as completed: "))
+            todo_list.mark_task_completed(task_index)
+            print("Task marked as completed!")
+
+        elif choice == "4":
+            print("Exiting the To-Do List application.")
+            break
+
+        else:
+            print("Invalid choice. Please choose a valid option.")
+
+if __name__ == "__main__":
+    main()
